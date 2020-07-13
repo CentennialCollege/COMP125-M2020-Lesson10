@@ -75,7 +75,7 @@
 
     function validateForm()
     {
-        let contact = {};
+        let contact = new objects.Contact();
 
         let contactForm = document.forms[0];
 
@@ -170,7 +170,7 @@
                 event.preventDefault();
                 console.log("Submit Button Clicked");
 
-                console.log(contact);
+                console.log(contact.toString());
 
             });
         }
