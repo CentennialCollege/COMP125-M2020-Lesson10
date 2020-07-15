@@ -179,6 +179,57 @@
         return false;
     }
 
+    function loadAddressBookData()
+    {
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "addressbook.json");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        // step 4 - register the readystate event 
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+
+                let data = JSON.parse(XHR.responseText);
+                let addressBook = data.addressBook;
+
+                console.log(addressBook);
+
+                let contactList = [];
+
+                for (const record of addressBook) 
+                {
+                    let contact = new objects.Contact();
+                    contact.setContact(record);
+                    contactList.push(contact);
+                }
+
+                console.log(contactList);
+
+                let tableBody = document.getElementById("tableBody");
+                for (const contact of contactList) 
+                {
+                    let row = document.createElement('tr');
+                    row.innerHTML = 
+                    `
+                    <td>${contact.firstName}</td>
+                    <td>${contact.lastName}</td>
+                    <td>${contact.contactNumber}</td>
+                    <td>${contact.emailAddress}</td>
+                    `
+                    tableBody.appendChild(row);
+                }
+
+               
+            }
+        });
+    }
+
 
     // named function
     function Start()
@@ -206,6 +257,11 @@
        else
        {
         console.warn("form not validated - does not exist");
+       }
+
+       if(title == "products")
+       {
+           loadAddressBookData();
        }
 
     } 

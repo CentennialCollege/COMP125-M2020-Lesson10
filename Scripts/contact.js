@@ -39,6 +39,15 @@ let objects;
             return JSONObject;
         }
 
+        setContact(JSON_Data)
+        {
+            this.firstName = JSON_Data.firstName;
+            this.lastName = JSON_Data.lastName;
+            this.emailAddress = JSON_Data.emailAddress;
+            this.contactNumber = JSON_Data.contactNumber;
+            this.shortMessage = JSON_Data.shortMessage;
+        }
+
 
     }
     objects.Contact = Contact;
