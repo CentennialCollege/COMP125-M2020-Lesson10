@@ -172,6 +172,8 @@
 
                 console.log(contact.toString());
 
+                console.log(contact.toJSON());
+
             });
         }
         return false;
