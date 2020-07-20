@@ -238,6 +238,135 @@
         });
     }
 
+    function AboutContent()
+    {
+        console.info("About Content Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/about.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let main = document.getElementsByTagName("main")[0];
+
+                let mainData = XHR.responseText;
+
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
+    function ContactContent()
+    {
+        console.info("Contact Content Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/contact.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let main = document.getElementsByTagName("main")[0];
+
+                let mainData = XHR.responseText;
+
+                main.innerHTML = mainData;
+
+                validateForm();
+            }
+        });
+    }
+
+    function HomeContent()
+    {
+        console.info("Home Content Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/home.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let main = document.getElementsByTagName("main")[0];
+
+                let mainData = XHR.responseText;
+
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
+    function ProductsContent()
+    {
+        console.info("Products Content Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/products.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let main = document.getElementsByTagName("main")[0];
+
+                let mainData = XHR.responseText;
+
+                main.innerHTML = mainData;
+
+                loadAddressBookData();
+            }
+        });
+    }
+
+    function ServicesContent()
+    {
+        console.info("Services Content Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Views/content/services.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let main = document.getElementsByTagName("main")[0];
+
+                let mainData = XHR.responseText;
+
+                main.innerHTML = mainData;
+            }
+        });
+    }
+
 
     // named function
     function Start()
@@ -250,20 +379,25 @@
 
         loadHeader();
 
+        
+
         // content switcher
         switch(title)
         {
             case "home":
+                HomeContent();
                 break;
             case "contact":
-                validateForm();
+                ContactContent();
                 break;
             case "products":
-                loadAddressBookData();
+                ProductsContent();
                 break;
             case "services":
+                ServicesContent();
                 break;
             case "about":
+                AboutContent();
                 break;
         }
 
