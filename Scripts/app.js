@@ -179,13 +179,42 @@
         return false;
     }
 
-    function loadAddressBookData()
+    function loadHeader()
     {
+        console.info("Header Loading...");
+
         // step 1 - creates the XHR object
         let XHR = new XMLHttpRequest();
 
         // step 2 - configures the message
-        XHR.open("GET", "addressbook.json");
+        XHR.open("GET", "./Views/partials/header.html");
+
+        // step 3 - Executes the request
+        XHR.send();
+
+        XHR.addEventListener("readystatechange", function(){
+            if((XHR.readyState === 4) && (XHR.status === 200))
+            {
+                let header = document.getElementsByTagName("header")[0];
+
+                let headerData = XHR.responseText;
+
+                header.innerHTML = headerData;
+
+                highlightActiveLink();
+            }
+        });
+    }
+
+    function loadAddressBookData()
+    {
+        console.info("AddressBook Loading...");
+
+        // step 1 - creates the XHR object
+        let XHR = new XMLHttpRequest();
+
+        // step 2 - configures the message
+        XHR.open("GET", "./Data/addressbook.json");
 
         // step 3 - Executes the request
         XHR.send();
@@ -195,12 +224,13 @@
             if((XHR.readyState === 4) && (XHR.status === 200))
             {
 
-                let data = JSON.parse(XHR.responseText);
-                let addressBook = data.addressBook;
+                let dataFile = JSON.parse(XHR.responseText);
+                let addressBook = dataFile.addressBook;
 
                 console.log(addressBook);
 
                 let contactList = [];
+                // let contactList = new Array<objects.Contact>();
 
                 for (const record of addressBook) 
                 {
@@ -261,6 +291,8 @@
 
        if(title == "products")
        {
+           loadHeader();
+           
            loadAddressBookData();
        }
 
