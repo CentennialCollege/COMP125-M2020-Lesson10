@@ -149,11 +149,9 @@
                 AboutContent();
                 break;
         }
-
-        loadFooter();
     }
 
-    function InitializeSite()
+    function loadHeader()
     {
         console.info("Header Loading...");
 
@@ -408,8 +406,14 @@
     {
         console.log('%cApp Started...', "color:white; font-size: 24px;");   
 
-        InitializeSite();
+        HomeContent();
+
+        loadHeader();
+
+        loadFooter();
+
     } 
+
 
 
     window.addEventListener("load", Start);

@@ -153,7 +153,7 @@
         loadFooter();
     }
 
-    function InitializeSite()
+    function loadHeader()
     {
         console.info("Header Loading...");
 
@@ -408,8 +408,12 @@
     {
         console.log('%cApp Started...', "color:white; font-size: 24px;");   
 
-        InitializeSite();
+        loadHeader();
+
+        
+
     } 
+
 
 
     window.addEventListener("load", Start);
