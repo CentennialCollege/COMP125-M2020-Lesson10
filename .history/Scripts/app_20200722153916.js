@@ -3,20 +3,15 @@
 // IIFE -Immediately Ivoked Function Expression
 (function(){
 
-    function highlightActiveLink(id) 
+    function highlightActiveLink() 
     {
         let navAnchors = document.querySelectorAll("li a");
 
         for (const anchor of navAnchors) 
         {
-         anchor.className = "nav-link";
-        }
-
-        for (const anchor of navAnchors) 
-        {
             let anchorString = anchor.getAttribute("id");
 
-            if (id === anchorString)
+            if (document.title === anchorString)
             {
                 anchor.className = "nav-link active";
             }
@@ -146,40 +141,44 @@
 
                 let navLinks = document.getElementsByTagName("a");
 
+                let id = "";
+
                 for (const link of navLinks) 
                 {
-                    link.addEventListener("click", (event) =>{
+                    link.addEventListener("click", function(event){
                         event.preventDefault();
 
-                        let id = link.getAttribute("id");
+                        id = link.getAttribute("id");
+
+                        console.log(id);
 
                         document.title = id;
 
                         window.history.pushState("", id, "/"+id.toLowerCase());
 
-                        highlightActiveLink(id);
-
-                         // content switcher
-                        switch(id)
-                        {
-                            case "Home":
-                                HomeContent();
-                                break;
-                            case "Contact":
-                                ContactContent();
-                                break;
-                            case "Products":
-                                ProductsContent();
-                                break;
-                            case "Services":
-                                ServicesContent();
-                                break;
-                            case "About":
-                                AboutContent();
-                                break;
-                        }
-
                     });
+                }
+
+               highlightActiveLink();
+
+                // content switcher
+                switch(id)
+                {
+                    case "Home":
+                        HomeContent();
+                        break;
+                    case "Contact":
+                        ContactContent();
+                        break;
+                    case "Products":
+                        ProductsContent();
+                        break;
+                    case "Services":
+                        ServicesContent();
+                        break;
+                    case "About":
+                        AboutContent();
+                        break;
                 }
             }
         });
@@ -399,9 +398,8 @@
     {
         console.log('%cApp Started...', "color:white; font-size: 24px;");   
 
-        HomeContent();
-
         loadHeader();
+
 
         loadFooter();
 

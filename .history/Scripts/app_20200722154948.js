@@ -399,9 +399,8 @@
     {
         console.log('%cApp Started...', "color:white; font-size: 24px;");   
 
-        HomeContent();
-
         loadHeader();
+
 
         loadFooter();
 

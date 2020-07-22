@@ -3,20 +3,33 @@
 // IIFE -Immediately Ivoked Function Expression
 (function(){
 
-    function highlightActiveLink(id) 
+
+
+    function getPageTitle(title)
+    {
+        title = document.title;
+
+        title = title.toLowerCase();
+
+        console.log(`The title of the page is ${title}`);
+
+        return title;
+    }
+
+    function highlightActiveLink() 
     {
         let navAnchors = document.querySelectorAll("li a");
 
         for (const anchor of navAnchors) 
         {
-         anchor.className = "nav-link";
-        }
 
-        for (const anchor of navAnchors) 
-        {
             let anchorString = anchor.getAttribute("id");
 
-            if (id === anchorString)
+            //console.log(anchorString);
+
+            //anchorString = anchorString.substr(0, anchorString.length - 5);
+
+            if (document.title === anchorString)
             {
                 anchor.className = "nav-link active";
             }
@@ -122,7 +135,7 @@
         });
     }
 
-    function loadHeader()
+    function loadHeader(title)
     {
         console.info("Header Loading...");
 
@@ -148,39 +161,18 @@
 
                 for (const link of navLinks) 
                 {
-                    link.addEventListener("click", (event) =>{
+                    link.addEventListener("click", function(event){
                         event.preventDefault();
 
                         let id = link.getAttribute("id");
 
+                        window.history.pushState("", "", "/"+id.toLowerCase());
+
                         document.title = id;
-
-                        window.history.pushState("", id, "/"+id.toLowerCase());
-
-                        highlightActiveLink(id);
-
-                         // content switcher
-                        switch(id)
-                        {
-                            case "Home":
-                                HomeContent();
-                                break;
-                            case "Contact":
-                                ContactContent();
-                                break;
-                            case "Products":
-                                ProductsContent();
-                                break;
-                            case "Services":
-                                ServicesContent();
-                                break;
-                            case "About":
-                                AboutContent();
-                                break;
-                        }
-
                     });
                 }
+
+                highlightActiveLink();
             }
         });
     }
@@ -399,12 +391,46 @@
     {
         console.log('%cApp Started...', "color:white; font-size: 24px;");   
 
-        HomeContent();
+        /*
+        let title = document.title;
 
-        loadHeader();
+        title = getPageTitle(title);
+        */
+
+        
+
+
+        //window.history.pushState("", "", "/home");
+
+        document.title = "home";
+
+        let title = "home";
+        
+        loadHeader(title);
+
+        /*
+        // content switcher
+        switch(title)
+        {
+            case "home":
+                HomeContent();
+                break;
+            case "contact":
+                ContactContent();
+                break;
+            case "products":
+                ProductsContent();
+                break;
+            case "services":
+                ServicesContent();
+                break;
+            case "about":
+                AboutContent();
+                break;
+        }
 
         loadFooter();
-
+        */
     } 
 
 
