@@ -410,9 +410,7 @@ import { Contact } from "./contact.js";
         date.setTime(date.getTime() + (expiry_in_days*24*60*60*1000));
 
         let  expires = "expires="+ date.toUTCString();
-
-        path = encodeURIComponent(path);
-        document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";" + path;
+        document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";path=/";
     }
 
 
@@ -446,7 +444,7 @@ import { Contact } from "./contact.js";
         InitializeSite();
 
         setCookie("username", "Tom",1);
-        setCookie("session", 1, 2, "/contact");
+        setCookie("session", 1, 1);
 
 
         console.log(getCookie("username"));

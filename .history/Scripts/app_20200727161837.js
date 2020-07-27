@@ -446,7 +446,7 @@ import { Contact } from "./contact.js";
         InitializeSite();
 
         setCookie("username", "Tom",1);
-        setCookie("session", 1, 2, "/contact");
+        setCookie("session", 1, 2, "/Content");
 
 
         console.log(getCookie("username"));

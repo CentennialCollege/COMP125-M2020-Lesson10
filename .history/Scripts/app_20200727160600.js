@@ -404,35 +404,21 @@ import { Contact } from "./contact.js";
     }
 
 
-    function setCookie(cookie_name, cookie_value, expiry_in_days, path="/") 
-    {
-        let date = new Date();
-        date.setTime(date.getTime() + (expiry_in_days*24*60*60*1000));
-
-        let  expires = "expires="+ date.toUTCString();
-
-        path = encodeURIComponent(path);
-        document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";" + path;
-    }
-
-
-
-    function getCookie(cookie_name) 
-    {
+    function getCookie(cookie_name) {
         let name = cookie_name + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
 
-        let cookieArray = decodedCookie.split(';');
+        console.log(decodedCookie);
 
-        for(let i = 0; i <cookieArray.length; i++) {
-          let component = cookieArray[i];
+        let ca = decodedCookie.split(';');
 
-          while (component.charAt(0) == ' ') 
-          {
-            component = component.substring(1);
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
           }
-          if (component.indexOf(name) == 0) {
-            return component.substring(name.length, component.length);
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
           }
         }
         return "";
@@ -445,12 +431,11 @@ import { Contact } from "./contact.js";
 
         InitializeSite();
 
-        setCookie("username", "Tom",1);
-        setCookie("session", 1, 2, "/contact");
+        let username = "Tom";
+        document.cookie = "username=" + encodeURIComponent(username) +  "; path='/Views'";
 
 
         console.log(getCookie("username"));
-        console.log(getCookie("session"));
         
 
     } 

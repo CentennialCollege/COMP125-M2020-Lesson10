@@ -411,7 +411,7 @@ import { Contact } from "./contact.js";
 
         let  expires = "expires="+ date.toUTCString();
 
-        path = encodeURIComponent(path);
+        let path = encodeURIComponent(path);
         document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";" + path;
     }
 
@@ -446,7 +446,7 @@ import { Contact } from "./contact.js";
         InitializeSite();
 
         setCookie("username", "Tom",1);
-        setCookie("session", 1, 2, "/contact");
+        setCookie("session", 1, 2, "/Content");
 
 
         console.log(getCookie("username"));

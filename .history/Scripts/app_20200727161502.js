@@ -404,15 +404,13 @@ import { Contact } from "./contact.js";
     }
 
 
-    function setCookie(cookie_name, cookie_value, expiry_in_days, path="/") 
+    function setCookie(cookie_name, cookie_value, expiry_in_days) 
     {
         let date = new Date();
         date.setTime(date.getTime() + (expiry_in_days*24*60*60*1000));
 
         let  expires = "expires="+ date.toUTCString();
-
-        path = encodeURIComponent(path);
-        document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";" + path;
+        document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";path=/";
     }
 
 
@@ -445,8 +443,9 @@ import { Contact } from "./contact.js";
 
         InitializeSite();
 
-        setCookie("username", "Tom",1);
-        setCookie("session", 1, 2, "/contact");
+        //let username = "Tom";
+        document.cookie = "username=Tom";
+        document.cookie = "session=1";
 
 
         console.log(getCookie("username"));
