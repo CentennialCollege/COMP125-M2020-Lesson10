@@ -299,7 +299,10 @@ import { Contact } from "./contact.js";
         console.log(sessionStorage.getItem("username"));
         sessionStorage.clear();
         let tom = new objects.Person("Tom", 23);
-        tom.saysHello();
+        tom.SaysHello();
+        let peter = new objects.Student("Peter", 22, "A1234567890");
+        peter.SaysHello();
+        peter.Studies();
     }
     window.addEventListener("load", Start);
 })();

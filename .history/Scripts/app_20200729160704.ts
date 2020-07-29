@@ -458,10 +458,10 @@ import { Contact } from "./contact.js";
        sessionStorage.clear();
 
        let tom = new objects.Person("Tom", 23);
-        tom.SaysHello();
+        tom.saysHello();
 
         let peter = new objects.Student("Peter", 22, "A1234567890");
-        peter.SaysHello();
+        peter.saysHello();
         peter.Studies();
     } 
 

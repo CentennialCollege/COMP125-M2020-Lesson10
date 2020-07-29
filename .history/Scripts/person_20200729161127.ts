@@ -17,29 +17,19 @@
             this.m_name = value;
         }
 
-        get Age():number
-        {
-            return this.m_age;
-        }
-
-        set Age(value:number)
-        {
-            this.m_age = value;
-        }
-
 
         // constructor
         constructor(name:string, age:number)
         {
-            this.Name = name;
-            this.Age = age;
+            this.m_name = name;
+            this.m_age = age;
         }
 
         // public methods
 
         public SaysHello(): void
         {
-            console.log(`${this.Name} says hello!`);
+            console.log(`${this.m_name} says hello!`);
         }
     }
  }

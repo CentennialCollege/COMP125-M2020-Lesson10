@@ -39,7 +39,7 @@
 
         public SaysHello(): void
         {
-            console.log(`${this.Name} says hello!`);
+            console.log(`${this.m_name} says hello!`);
         }
     }
  }
