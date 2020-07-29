@@ -123,10 +123,6 @@ import { Contact } from "./contact.js";
 
             localStorage.setItem("contact", contact.toString());
 
-            console.log(localStorage.getItem("contact"));
-
-            localStorage.clear();
-
         });
     }
 

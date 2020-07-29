@@ -121,12 +121,6 @@ import { Contact } from "./contact.js";
 
             console.log(contact.toJSON());
 
-            localStorage.setItem("contact", contact.toString());
-
-            console.log(localStorage.getItem("contact"));
-
-            localStorage.clear();
-
         });
     }
 
@@ -451,11 +445,12 @@ import { Contact } from "./contact.js";
 
         InitializeSite();
 
-        sessionStorage.setItem("username", "Tom");
+        setCookie("username", "Tom",1);
+        setCookie("session", 1, 2, "/contact");
 
-       console.log(sessionStorage.getItem("username"));
 
-       sessionStorage.clear();
+        console.log(getCookie("username"));
+        console.log(getCookie("session"));
         
 
     } 

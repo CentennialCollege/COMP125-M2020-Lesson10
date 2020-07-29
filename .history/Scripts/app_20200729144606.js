@@ -123,10 +123,6 @@ import { Contact } from "./contact.js";
 
             localStorage.setItem("contact", contact.toString());
 
-            console.log(localStorage.getItem("contact"));
-
-            localStorage.clear();
-
         });
     }
 
@@ -454,8 +450,6 @@ import { Contact } from "./contact.js";
         sessionStorage.setItem("username", "Tom");
 
        console.log(sessionStorage.getItem("username"));
-
-       sessionStorage.clear();
         
 
     } 
